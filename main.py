@@ -1,6 +1,8 @@
 # Python
+from typing import Optional
 
 # Pydantic
+from pydantic import BaseModel
 
 # FastAPI
 from fastapi import FastAPI
