@@ -33,20 +33,23 @@ class Person(BaseModel):
     first_name: str = Field(
         ...,
         min_length= 1,
-        max_length= 50
+        max_length= 50,
+        example= "Andrea"
     )
     last_name: str = Field(
         ...,
         min_length= 1,
-        max_length= 50
+        max_length= 50,
+        example= "Cervera Lozano"
     )
     age: int = Field(
         ...,
         gt=0,
-        le=100
+        le=100,
+        example= 31
     )
-    hair_color: Optional[HairColor] = Field(default=None)
-    is_married: Optional[bool] = Field(default=None)
+    hair_color: Optional[HairColor] = Field(default=None, example= "black")
+    is_married: Optional[bool] = Field(default=None, example=True)
 
 @app.get("/")
 def home():
