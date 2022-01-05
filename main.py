@@ -13,6 +13,12 @@ app = FastAPI()
 
 # Models
 
+class Location(BaseModel):
+    city: str
+    state: str
+    country: str
+
+
 class Person(BaseModel):
 
     first_name: str
