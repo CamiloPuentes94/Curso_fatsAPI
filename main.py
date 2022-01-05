@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 # FastAPI
 from fastapi import FastAPI
-from fastapi import Body, Query
+from fastapi import Body, Query, Path
 
 app = FastAPI()
 
@@ -39,3 +39,10 @@ def show_person(
     age: str = Query(...)
 ):
     return {name: age}
+
+# Validaciones: path parameters
+
+@app.get("/person/detail/{person_id}")
+def show_person(
+    person_id: int = Path(...) 
+):
