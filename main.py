@@ -79,6 +79,9 @@ def update_person(
         description= "This is the person ID",
         gt=0
     ),
-    person: Person = Body(...)
+    person: Person = Body(...),
+    location: Location = Body(...)
 ):
-    return person
+    results = person.dict()
+    results.update(location.dict())
+    return results
