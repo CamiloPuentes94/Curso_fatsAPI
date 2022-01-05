@@ -35,8 +35,18 @@ def create_person(person: Person = Body(...)):   #esta clase me dice que es de t
 
 @app.get("/person/detail")
 def show_person(
-    name: Optional[str] = Query(None,min_length=1,max_length=50),
-    age: str = Query(...)
+    name: Optional[str] = Query(
+        None,
+        min_length=1,
+        max_length=50,
+        title="Person name",
+        description= "This is the person name. It's between 1 and 50 characters"
+        ),
+    age: str = Query(
+        ...,
+        title= "Person age",
+        description= "this is the person age. It's requered"
+        )
 ):
     return {name: age}
 
@@ -44,6 +54,11 @@ def show_person(
 
 @app.get("/person/detail/{person_id}")
 def show_person(
-    person_id: int = Path(..., gt= 0) 
+    person_id: int = Path(
+        ...,
+        gt= 0,
+        title= "Person id",
+        description= "this is the person id. It's obligatory"
+        ) 
 ):
     return {person_id: "It exist!"}
