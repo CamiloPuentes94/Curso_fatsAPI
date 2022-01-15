@@ -9,6 +9,7 @@ from pydantic import Field
 # FastAPI
 from fastapi import FastAPI
 from fastapi import Body, Query, Path
+from  fastapi import status
 
 app = FastAPI()
 
@@ -57,19 +58,29 @@ class Person(PersonBase):
 class PersonOut(PersonBase):
     pass
 
-@app.get("/")
+@app.get(
+    path= "/",
+    status_code=status.HTTP_200_OK
+    )
 def home():
     return {"hello": "world"}
 
 # Request and Response Body
 
-@app.post("/person/new", response_model=PersonOut )
+@app.post(
+    path="/person/new",
+    response_model=PersonOut,
+    status_code=status.HTTP_201_CREATED
+    )
 def create_person(person: Person = Body(...)):   #esta clase me dice que es de tipo body, cuando en los parametros tienen ... quiere decir que es obligatorio
     return person
 
 # Validaciones: Query Parameters
 
-@app.get("/person/detail")
+@app.get(
+    path="/person/detail",
+    status_code=status.HTTP_200_OK
+    )
 def show_person(
     name: Optional[str] = Query(
         None,
@@ -90,7 +101,10 @@ def show_person(
 
 # Validaciones: path parameters
 
-@app.get("/person/detail/{person_id}")
+@app.get(
+    path="/person/detail/{person_id}",
+    status_code=status.HTTP_200_OK
+    )
 def show_person(
     person_id: int = Path(
         ...,
@@ -104,7 +118,10 @@ def show_person(
 
 # validaciones: Request Body
 
-@app.put("/person/{person_id}")
+@app.put(
+    path="/person/{person_id}",
+    status_code=status.HTTP_200_OK
+    )
 def update_person(
     person_id: int = Path(
         ...,
