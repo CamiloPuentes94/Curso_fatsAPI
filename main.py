@@ -50,6 +50,7 @@ class Person(BaseModel):
     )
     hair_color: Optional[HairColor] = Field(default=None, example= "black")
     is_married: Optional[bool] = Field(default=None, example=True)
+    password: str = Field(..., min_length=8)
 
 @app.get("/")
 def home():
