@@ -65,6 +65,9 @@ class LoginOut(BaseModel):
         max_length=20,
         example="migue2022"
         )
+    message: str = Field(
+        default="Login successfully"
+        )
 
 @app.get(
     path= "/",
@@ -152,4 +155,4 @@ def update_person(
     status_code=status.HTTP_200_OK
 )
 def login(username: str = Form(...), password: str = Form(...)):
-    return LoginOut
+    return LoginOut(username=username)
