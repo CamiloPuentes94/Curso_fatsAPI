@@ -52,13 +52,35 @@ class Person(BaseModel):
     is_married: Optional[bool] = Field(default=None, example=True)
     password: str = Field(..., min_length=8)
 
+class PersonOut(BaseModel):
+    first_name: str = Field(
+        ...,
+        min_length= 1,
+        max_length= 50,
+        example= "Andrea"
+    )
+    last_name: str = Field(
+        ...,
+        min_length= 1,
+        max_length= 50,
+        example= "Cervera Lozano"
+    )
+    age: int = Field(
+        ...,
+        gt=0,
+        le=100,
+        example= 31
+    )
+    hair_color: Optional[HairColor] = Field(default=None, example= "black")
+    is_married: Optional[bool] = Field(default=None, example=True)
+
 @app.get("/")
 def home():
     return {"hello": "world"}
 
 # Request and Response Body
 
-@app.post("/person/new")
+@app.post("/person/new", response_model=PersonOut )
 def create_person(person: Person = Body(...)):   #esta clase me dice que es de tipo body, cuando en los parametros tienen ... quiere decir que es obligatorio
     return person
 
