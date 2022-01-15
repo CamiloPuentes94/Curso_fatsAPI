@@ -58,6 +58,14 @@ class Person(PersonBase):
 class PersonOut(PersonBase):
     pass
 
+class LoginOut(BaseModel):
+    
+    username: str = Field(
+        ...,
+        max_length=20,
+        example="migue2022"
+        )
+
 @app.get(
     path= "/",
     status_code=status.HTTP_200_OK
