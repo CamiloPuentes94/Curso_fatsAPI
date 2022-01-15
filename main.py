@@ -137,3 +137,9 @@ def update_person(
     # results.update(location.dict())
     # return results
     return person
+
+@app.post(
+    path="/login",
+    response_model=loginOut,
+    status_code=status.HTTP_200_OK
+)
