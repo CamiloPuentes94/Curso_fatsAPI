@@ -11,6 +11,7 @@ from pydantic import EmailStr
 from fastapi import FastAPI
 from fastapi import Body, Query, Path, Form, Header, Cookie, UploadFile, File
 from  fastapi import status
+from fastapi import HTTPException
 
 app = FastAPI()
 
@@ -200,3 +201,4 @@ def post_image(
         "Format":image.content_type,
         "Size(kb)": round(len(image.file.read())/1024, ndigits=2)
     }
+    
