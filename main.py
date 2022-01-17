@@ -186,3 +186,9 @@ def contact(
     ads: Optional[str] = Cookie(default= None)
 ):
     return user_agent
+
+# Files
+
+@app.post(
+    path= "/post-image"
+)
