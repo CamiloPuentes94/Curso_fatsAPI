@@ -160,3 +160,8 @@ def login(username: str = Form(...), password: str = Form(...)):
     return LoginOut(username=username)
 
 # Cookies and headers parameters
+
+@app.post(
+    path= "/contact",
+    status_code=status.HTTP_200_OK
+)
