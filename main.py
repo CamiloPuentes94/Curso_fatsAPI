@@ -149,6 +149,8 @@ def update_person(
     # return results
     return person
 
+# Forms
+
 @app.post(
     path="/login",
     response_model=LoginOut,
@@ -156,3 +158,5 @@ def update_person(
 )
 def login(username: str = Form(...), password: str = Form(...)):
     return LoginOut(username=username)
+
+# Cookies and headers parameters
