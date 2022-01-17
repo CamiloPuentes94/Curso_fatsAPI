@@ -9,7 +9,7 @@ from pydantic import EmailStr
 
 # FastAPI
 from fastapi import FastAPI
-from fastapi import Body, Query, Path, Form, Header, Cookie
+from fastapi import Body, Query, Path, Form, Header, Cookie, UploadFile, File
 from  fastapi import status
 
 app = FastAPI()
@@ -192,3 +192,7 @@ def contact(
 @app.post(
     path= "/post-image"
 )
+def post_image(
+    image: UploadFile =File(...)
+):
+    pass
