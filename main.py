@@ -106,7 +106,8 @@ def create_person(person: Person = Body(...)):   #esta clase me dice que es de t
 @app.get(
     path="/person/detail",
     status_code=status.HTTP_200_OK,
-    tags=["Persons"]
+    tags=["Persons"],
+    deprecated=True
     )
 def show_person(
     name: Optional[str] = Query(
