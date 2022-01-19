@@ -85,9 +85,20 @@ def home():
     path="/person/new",
     response_model=PersonOut,
     status_code=status.HTTP_201_CREATED,
-    tags=["Persons"]
+    tags=["Persons"],
+    summary="Create person in the app"
     )
 def create_person(person: Person = Body(...)):   #esta clase me dice que es de tipo body, cuando en los parametros tienen ... quiere decir que es obligatorio
+    """[Create Person]
+    
+    This path operation creates a person in the app and save the information in the database
+    
+    parameters:
+    - Request body parameter:
+        - **person: Person** -> A person model with first name, last name, age, haird color and marital status 
+    
+    Returns a peron model with first name, last name, age, hair color and marital status
+    """
     return person
 
 # Validaciones: Query Parameters
